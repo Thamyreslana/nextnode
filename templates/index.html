@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextNode — Peças de PC com compatibilidade conferida</title>
+  <meta name="description" content="Monte seu PC no NextNode: o montador confere soquete, memória e fonte enquanto você escolhe. 5% de desconto no Pix e até 10x sem juros." />
+  <meta property="og:title" content="NextNode — Peças de PC" />
+  <meta property="og:description" content="Monte seu PC sem medo de comprar peça errada." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#071214" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300cdb5'/><path d='M9 23V9h3l8 10V9h3v14h-3L12 13v10z' fill='%23021a17'/></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=Orbitron:wght@700&display=swap" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ═══ BARRA DE VANTAGENS ═══════════════════════════════════ -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><span data-icon="truck" data-size="16"></span> Frete grátis acima de R$ 500</span>
+      <span><span data-icon="pix" data-size="16"></span> 5% de desconto no Pix</span>
+      <span><span data-icon="card" data-size="16"></span> Até 10x sem juros</span>
+    </div>
+  </div>
+
+  <!-- ═══ CABEÇALHO ════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="NextNode, página inicial">
+        <span class="logo-mark" aria-hidden="true">N</span>
+        <span class="logo-text">NEXTNODE</span>
+      </a>
+
+      <form class="search" id="search-form" role="search">
+        <span data-icon="search" data-size="18" class="search-icon"></span>
+        <input type="search" id="search-input" placeholder="Buscar por produto ou marca" aria-label="Buscar produtos" autocomplete="off" />
+        <button type="button" class="search-image-btn" id="image-search-btn" aria-label="Buscar por imagem" title="Buscar por imagem" aria-haspopup="dialog">
+          <span data-icon="image" data-size="20"></span>
+        </button>
+      </form>
+
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#montador">Montar PC</a></li>
+          <li><a href="#ofertas">Ofertas</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+        </ul>
+      </nav>
+
+      <button type="button" class="cart-btn" id="cart-btn" aria-label="Abrir carrinho" aria-controls="cart-sidebar">
+        <span data-icon="cart" data-size="22"></span>
+        <span class="cart-btn-label">Carrinho</span>
+        <span class="cart-badge" id="cart-badge" hidden>0</span>
+      </button>
+
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <span data-icon="menu" data-size="22"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ═══ HERO ═══════════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">Loja de peças para PC</p>
+          <h1 class="hero-title">Monte seu PC sem medo de comprar peça errada.</h1>
+          <p class="hero-desc">
+            Enquanto você escolhe, o montador confere se o processador encaixa na placa-mãe,
+            se a memória é do tipo certo e se a fonte aguenta o conjunto.
+            O preço no Pix já aparece com 5% de desconto.
+          </p>
+          <div class="hero-actions">
+            <a href="#montador" class="btn btn-primary btn-lg">Montar meu PC</a>
+            <a href="#ofertas" class="btn btn-ghost btn-lg">Ver ofertas do dia</a>
+          </div>
+        </div>
+
+        <aside class="build-card" id="featured-build" aria-label="Build sugerida">
+          <p class="muted">Carregando build sugerida…</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ═══ CATEGORIAS ═════════════════════════════════════════ -->
+    <section class="section section-tight" aria-labelledby="categorias-title">
+      <div class="container">
+        <h2 class="visually-hidden" id="categorias-title">Categorias</h2>
+        <div class="category-strip" id="category-strip"></div>
+      </div>
+    </section>
+
+    <!-- ═══ OFERTAS ════════════════════════════════════════════ -->
+    <section class="section" id="ofertas" aria-labelledby="ofertas-title">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <h2 class="section-title" id="ofertas-title">Ofertas relâmpago</h2>
+            <p class="section-desc">Desconto extra por tempo limitado. Quando o relógio zera, a oferta acaba para todo mundo.</p>
+          </div>
+        </header>
+        <div class="deals-grid" id="deals-grid"></div>
+      </div>
+    </section>
+
+    <!-- ═══ MONTADOR ═══════════════════════════════════════════ -->
+    <section class="section section-alt" id="montador" aria-labelledby="montador-title">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <h2 class="section-title" id="montador-title">Monte seu PC</h2>
+            <p class="section-desc">Escolha uma peça de cada categoria. Opções que não combinam com o que você já escolheu aparecem marcadas como incompatíveis.</p>
+          </div>
+        </header>
+
+        <div class="builder">
+          <div class="builder-slots" id="builder-slots"></div>
+          <aside class="builder-summary" id="builder-summary" aria-live="polite"></aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CATÁLOGO ═══════════════════════════════════════════ -->
+    <section class="section" id="produtos" aria-labelledby="produtos-title">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <h2 class="section-title" id="produtos-title">Todos os produtos</h2>
+            <p class="section-desc" id="results-count" aria-live="polite"></p>
+          </div>
+        </header>
+
+        <div class="toolbar">
+          <div class="chips" id="category-chips" role="group" aria-label="Filtrar por categoria"></div>
+          <div class="toolbar-selects">
+            <label class="field">
+              <span>Preço</span>
+              <select id="price-filter" class="select">
+                <option value="all">Qualquer preço</option>
+                <option value="ate-1000">Até R$ 1.000</option>
+                <option value="1000-3000">R$ 1.000 a R$ 3.000</option>
+                <option value="acima-3000">Acima de R$ 3.000</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Ordenar</span>
+              <select id="sort-select" class="select">
+                <option value="relevance">Relevância</option>
+                <option value="price_asc">Menor preço</option>
+                <option value="price_desc">Maior preço</option>
+                <option value="rating">Melhor avaliados</option>
+                <option value="discount">Maior desconto</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="image-banner" id="image-banner" hidden>
+          <img id="image-banner-thumb" alt="Imagem usada na busca" />
+          <div class="image-banner-text">
+            <strong id="image-banner-title">Produtos parecidos com a sua imagem</strong>
+            <span class="note" id="image-banner-note"></span>
+          </div>
+          <button type="button" class="btn btn-ghost btn-sm" id="image-banner-clear">Limpar busca por imagem</button>
+        </div>
+
+        <div class="products-grid" id="products-grid"></div>
+      </div>
+    </section>
+
+    <!-- ═══ NEWSLETTER ═════════════════════════════════════════ -->
+    <section class="section section-tight" aria-labelledby="newsletter-title">
+      <div class="container">
+        <div class="newsletter">
+          <div>
+            <h2 class="newsletter-title" id="newsletter-title">Receba as ofertas relâmpago por e-mail</h2>
+            <p class="muted">Um e-mail por semana com as ofertas da semana e os lançamentos.</p>
+          </div>
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <label class="visually-hidden" for="newsletter-email">Seu e-mail</label>
+            <input type="email" id="newsletter-email" class="input" placeholder="seu@email.com" required autocomplete="email" />
+            <button type="submit" class="btn btn-primary">Quero receber</button>
+          </form>
+          <p class="newsletter-msg" id="newsletter-msg" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══ RODAPÉ ═══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo" aria-label="NextNode, página inicial">
+          <span class="logo-mark" aria-hidden="true">N</span>
+          <span class="logo-text">NEXTNODE</span>
+        </a>
+        <p class="muted">Peças de PC com compatibilidade conferida antes da compra.</p>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Categorias</h3>
+        <ul class="footer-links">
+          <li><a href="#produtos" data-filter-category="gpu">Placas de vídeo</a></li>
+          <li><a href="#produtos" data-filter-category="cpu">Processadores</a></li>
+          <li><a href="#produtos" data-filter-category="motherboard">Placas-mãe</a></li>
+          <li><a href="#produtos" data-filter-category="ram">Memórias</a></li>
+          <li><a href="#produtos" data-filter-category="ssd">SSDs</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-title">Como pagar</h3>
+        <ul class="footer-links footer-plain">
+          <li>Pix com 5% de desconto</li>
+          <li>Cartão em até 10x sem juros</li>
+          <li>Frete grátis acima de R$ 500</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 NextNode. Projeto de estudo: produtos, preços, estoque e frete são fictícios.</p>
+    </div>
+  </footer>
+
+  <!-- ═══ CARRINHO ═════════════════════════════════════════════ -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <aside class="cart" id="cart-sidebar" aria-label="Carrinho de compras" aria-hidden="true">
+    <div class="cart-header">
+      <h2>Carrinho</h2>
+      <button type="button" class="icon-btn" id="cart-close" aria-label="Fechar carrinho"><span data-icon="x" data-size="22"></span></button>
+    </div>
+
+    <div class="cart-items" id="cart-items"></div>
+
+    <div class="cart-footer" id="cart-footer" hidden>
+      <form class="cep-form" id="cep-form">
+        <label for="cep-input">Calcular frete</label>
+        <div class="cep-row">
+          <input type="text" id="cep-input" class="input" placeholder="00000-000" inputmode="numeric" autocomplete="postal-code" maxlength="9" />
+          <button type="submit" class="btn btn-ghost btn-sm">Calcular</button>
+        </div>
+      </form>
+      <div id="shipping-result"></div>
+
+      <dl class="cart-summary">
+        <div><dt>Subtotal</dt><dd id="cart-subtotal">R$ 0,00</dd></div>
+        <div><dt>Frete</dt><dd id="cart-shipping">Informe o CEP</dd></div>
+      </dl>
+      <div class="cart-total">
+        <span>Total no Pix</span>
+        <strong id="cart-total-pix">R$ 0,00</strong>
+      </div>
+      <p class="note" id="cart-installments"></p>
+
+      <button type="button" class="btn btn-primary btn-block" id="cart-checkout">Finalizar compra</button>
+      <button type="button" class="btn btn-link" id="cart-clear">Esvaziar carrinho</button>
+    </div>
+  </aside>
+
+  <!-- ═══ DETALHE DO PRODUTO ═══════════════════════════════════ -->
+  <dialog class="dialog" id="product-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-content" id="dialog-content"></div>
+  </dialog>
+
+  <!-- ═══ BUSCA POR IMAGEM ═════════════════════════════════════ -->
+  <dialog class="dialog dialog-sm" id="image-search-dialog" aria-labelledby="image-search-title">
+    <form class="image-search" id="image-search-form" novalidate>
+      <button type="button" class="dialog-close" data-close-image-search aria-label="Fechar"><span data-icon="x" data-size="22"></span></button>
+      <h2 class="dialog-title" id="image-search-title">Buscar por imagem</h2>
+      <p class="muted">Envie a foto de uma peça e o NextNode procura os produtos com a aparência mais parecida no catálogo.</p>
+
+      <label class="dropzone" id="image-dropzone">
+        <input type="file" id="image-input" class="visually-hidden" accept="image/jpeg,image/png,image/webp" />
+        <span class="dropzone-empty">
+          <span data-icon="upload" data-size="32"></span>
+          <strong>Escolha uma imagem</strong>
+          <span>ou arraste até aqui</span>
+          <span class="note">JPG, PNG ou WEBP até 8 MB. Também dá para colar com Ctrl+V.</span>
+        </span>
+        <img id="image-preview" alt="Prévia da imagem escolhida" hidden />
+      </label>
+
+      <p class="note" id="image-search-status"></p>
+      <p class="field-error" id="image-search-error" role="alert"></p>
+
+      <div class="dialog-actions">
+        <button type="submit" class="btn btn-primary" id="image-search-submit" disabled>
+          <span data-icon="search" data-size="18"></span> Buscar parecidos
+        </button>
+        <button type="button" class="btn btn-link" id="image-search-change" hidden>Trocar imagem</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast-container" class="toasts"></div>
+
+  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

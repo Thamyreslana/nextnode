@@ -1,0 +1,12 @@
+# NextNode — Render.com Configuration
+services:
+  - type: web
+    name: nextnode-hardware-store
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 2 --bind 0.0.0.0:$PORT
+    envVars:
+      # Precisa bater com o requires-python do pyproject.toml (>=3.14)
+      - key: PYTHON_VERSION
+        value: 3.14.4

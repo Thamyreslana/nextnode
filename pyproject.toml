@@ -1,0 +1,12 @@
+[project]
+name = "nextnode"
+version = "0.1.0"
+description = "Loja de peças para PC com montador que confere compatibilidade, busca por imagem e frete simulado"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "flask>=3.1.3",
+    "flask-cors>=6.0.5",
+    "gunicorn>=27.0.0",
+    "pillow>=13.0.0",
+]
